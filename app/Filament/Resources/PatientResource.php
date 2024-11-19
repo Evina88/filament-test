@@ -84,6 +84,12 @@ class PatientResource extends Resource
                 ->sortable(),
                 Tables\Columns\TextColumn::make('owner.name')
                 ->searchable(),
+                Tables\Columns\TextColumn::make('description'),
+                Tables\Columns\TextColumn::make('price')
+                    ->money('EUR')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('created_at')
+                    ->dateTime(),
                 ]
             )
             ->filters(
@@ -118,7 +124,7 @@ class PatientResource extends Resource
     public static function getRelations(): array
     {
         return [
-            //
+        RelationManagers\TreatmentsRelationManager::class,
         ];
     }
 
