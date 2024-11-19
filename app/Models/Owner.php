@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Owner extends Model
 {
+    protected $fillable = ['name', 'email', 'phone'];
     public function patients(): HasMany
     {
-        return $this->hasMany(Patient::class);
+        return $this->hasMany(Patient::class, 'owner_id');
     }
 }
